@@ -15,22 +15,22 @@ if __name__ == "__main__":
         if sys.argv[0] == arg:
             continue # turn this into function -> DRIP
         else:
-            # print(f"Argument {i:>6}: {arg}")
+            print(f"Argument {i:>6}: {arg}")
             i=1
-            # arrg_list =['a','b','c','e','f']
-            arrg_list =[]
-            arrg_list.append(sys.argv)
-            print(f'THIS IS LIST {arrg_list}')
-            # for it in arrg_list :
-            #     i_str=str(i)
-            #     filename=i_str+'.txt'
-            #     # if sys.argv[0] == arg:
-            #     #     continue
-            #     f=open( filename,'w')
+            arrg_list =['a','b','c','e','f']
+            # arrg_list =[]
+            # arrg_list.append(sys.argv)
+            # print(f'THIS IS LIST {arrg_list}')
+            for it in arrg_list :
+                i_str=str(i)
+                filename=i_str+'.txt'
+                # if sys.argv[0] == arg:
+                #     continue
+                f=open( filename,'w')
 
-            #     f.write("something")
-            #     f.close()
-            #     i=i+1
+                f.write("something")
+                f.close()
+                i=i+1
 
 # SAMPLE INPUT : python file_creator.py  test-01 test-o2 test-03.py test-04 test-5 test-06.c
 
