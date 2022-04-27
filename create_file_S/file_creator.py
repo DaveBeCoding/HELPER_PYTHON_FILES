@@ -1,45 +1,16 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
-import sys
+# YOU ARE NOT IN C++ LAND!!
 
-# print('Number of arguments:', len(sys.argv), 'arguments.')
-# print('Argument List:', str(sys.argv[1]), str(sys.argv[2]), str(sys.argv[3]))
+n = int(input("Enter number of elements : "))
 
+a = list(map(str, input("\nEnter the numbers : ").strip().split()))[:n]
 
-# main.py
+for it in a:
+    filename = it
+    f = open(filename, 'w')
 
-if __name__ == "__main__":
-    # print(f"Arguments count: {len(sys.argv)}")
-    for i, arg in enumerate(sys.argv):
-        if sys.argv[0] == arg:
-            continue  # turn this into function -> DRIP
-        else:
-            print(f"Argument {i:>6}: {arg}")
-            i = 1
-            arrg_list = ['a', 'b', 'c', 'e', 'f']
-            # arrg_list =[]
-            # arrg_list.append(sys.argv)
-            # print(f'THIS IS LIST {arrg_list}')
-            for it in arrg_list:
-                i_str = str(i)
-                filename = i_str+'.txt'
-                # if sys.argv[0] == arg:
-                #     continue
-                f = open(filename, 'w')
+    f.write("something")
+    f.close()
 
-                f.write("something")
-                f.close()
-                i = i+1
-
-# SAMPLE INPUT : python file_creator.py  test-01 test-o2 test-03.py test-04 test-5 test-06.c
-
-# i=1
-# arrg_list =['a','b','c','e','f']
-# for it in arrg_list :
-#  i_str=str(i)
-#  filename=i_str+'.txt'
-#  f=open( filename,'w')
-
-#  f.write("something")
-#  f.close()
-#  i=i+1
+print("\nFiles created - ", a)
