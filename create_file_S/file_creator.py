@@ -9,8 +9,8 @@ a = list(map(str, input("\nEnter File(s) : ").strip().split()))[:n]
 for it in a:
     filename = it
     f = open(filename, 'w')
-
-    f.write("print(FILE STAGED)")
+    complete = 'Succes 1'
+    f.write("print('FILE STAGED')")
     f.close()
 
 print("\nFiles created - ", a)
