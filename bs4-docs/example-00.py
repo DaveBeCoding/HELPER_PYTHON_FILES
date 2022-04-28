@@ -63,6 +63,9 @@ for link in soup.find_all('a'):
     print(link.get('href'))
     print('\n')
 
+print('\n')
+print('------------GET ALL TEXT FROM PAGE---------------')
+print(soup.get_text())
 
 
 
