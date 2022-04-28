@@ -53,6 +53,17 @@ print(soup.find_all('a'))
 print('\n')
 print('------------find(id=link3)---------------')
 print(soup.find(id="link3"))
+print(soup.find(id="link3").string)
+
+
+print('\n')
+print('------------find_all a-tags---------------')
+for link in soup.find_all('a'):
+    print(link.string)
+    print(link.get('href'))
+    print('\n')
+
+
 
 
 # print(soup.prettify())
