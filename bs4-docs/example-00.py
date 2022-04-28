@@ -29,22 +29,30 @@ print(soup.title.string)
 
 print('\n')
 print('-------------PARENT-NAME--------------')
+print(soup.title.parent.name)
 
 print('\n')
 print('-------------<P>--------------')
+print(soup.p)
+print(soup.p.string)
+
 
 print('\n')
 print('------------p[class]---------------')
+print(soup.p['class'])
 
 print('\n')
 print('--------------<a>-------------')
+print(soup.a)
 
 
 print('\n')
 print('------------find_all(a)---------------')
+print(soup.find_all('a'))
 
 print('\n')
 print('------------find(id=link3)---------------')
+print(soup.find(id="link3"))
 
 
 # print(soup.prettify())
