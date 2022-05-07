@@ -1,90 +1,77 @@
 
-            # Node class
+            
+    # Python program to demonstrate
+    # stack implementation using a linked list.
+    # node class
+
     class Node:
+        def __init__(self, value):
+            self.value = value
+            self.next = None
 
-        # Function to initialize the node object
-        def __init__(self, data):
-            self.data = data # Assign data
-            self.next = None # Initialize
-                            # next as null
 
-    # Linked List class
-    class LinkedList:
-        
-        # Function to initialize the Linked
-        # List object
+    class Stack:
+
+        # Initializing a stack.
+        # Use a dummy node, which is
+        # easier for handling edge cases.
         def __init__(self):
-            self.head = None
+            self.head = Node("head")
+            self.size = 0
 
-    # implement node struct
+        # String representation of the stack
+        def __str__(self):
+            cur = self.head.next
+            out = ""
+            while cur:
+                out += str(cur.value) + "->"
+                cur = cur.next
+            return out[:-3]
 
-    # A simple Python program to introduce a linked list
+        # Get the current size of the stack
+        def getSize(self):
+            return self.size
 
-    # Node class
-    class Node:
+        # Check if the stack is empty
+        def isEmpty(self):
+            return self.size == 0
 
-        # Function to initialise the node object
-        def __init__(self, data):
-            self.data = data # Assign data
-            self.next = None # Initialize next as null
+        # Get the top item of the stack
+        def peek(self):
+
+            # Sanitary check to see if we
+            # are peeking an empty stack.
+            if self.isEmpty():
+                raise Exception("Peeking from an empty stack")
+            return self.head.next.value
+
+        # Push a value into the stack.
+        def push(self, value):
+            node = Node(value)
+            node.next = self.head.next
+            self.head.next = node
+            self.size += 1
+
+        # Remove a value from the stack and return.
+        def pop(self):
+            if self.isEmpty():
+                raise Exception("Popping from an empty stack")
+            remove = self.head.next
+            self.head.next = self.head.next.next
+            self.size -= 1
+            return remove.value
 
 
-    # Linked List class contains a Node object
-    class LinkedList:
+    # Driver Code
+    if __name__ == "__main__":
+        stack = Stack()
+        for i in range(1, 11):
+            stack.push(i)
+        print(f"Stack: {stack}")
 
-        # Function to initialize head
-        def __init__(self):
-            self.head = None
-
-
-    # Code execution starts here
-    if __name__=='__main__':
-
-        # Start with the empty list
-        llist = LinkedList()
-
-        llist.head = Node(1)
-        second = Node(2)
-        third = Node(3)
-
-        '''
-        Three nodes have been created.
-        We have references to these three blocks as head,
-        second and third
-
-        llist.head	 second			 third
-            |			 |				 |
-            |			 |				 |
-        +----+------+	 +----+------+	 +----+------+
-        | 1 | None |	 | 2 | None |	 | 3 | None |
-        +----+------+	 +----+------+	 +----+------+
-        '''
-
-        llist.head.next = second; # Link first node with second
-
-        '''
-        Now next of first Node refers to second. So they
-        both are linked.
-
-        llist.head	 second			 third
-            |			 |				 |
-            |			 |				 |
-        +----+------+	 +----+------+	 +----+------+
-        | 1 | o-------->| 2 | null |	 | 3 | null |
-        +----+------+	 +----+------+	 +----+------+
-        '''
-
-        second.next = third; # Link second node with the third node
-
-        '''
-        Now next of second Node refers to third. So all three
-        nodes are linked.
-
-        llist.head	 second			 third
-            |			 |				 |
-            |			 |				 |
-        +----+------+	 +----+------+	 +----+------+
-        | 1 | o-------->| 2 | o-------->| 3 | null |
-        +----+------+	 +----+------+	 +----+------+
-        '''        
+        for _ in range(1, 6):
+            remove = stack.pop()
+            print(f"Pop: {remove}")
+        print(f"Stack: {stack}")        
+            
             
