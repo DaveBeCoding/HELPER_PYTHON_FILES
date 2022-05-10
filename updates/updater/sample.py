@@ -1,167 +1,77 @@
 
-
+            
     # Python program to demonstrate
-    # insert operation in binary search tree
-
-    # A utility class that represents
-    # an individual node in a BST
-
+    # stack implementation using a linked list.
+    # node class
 
     class Node:
-        def __init__(self, key):
-            self.left = None
-            self.right = None
-            self.val = key
-
-    # A utility function to insert
-    # a new node with the given key
+        def __init__(self, value):
+            self.value = value
+            self.next = None
 
 
-    def insert(root, key):
-        if root is None:
-            return Node(key)
-        else:
-            if root.val == key:
-                return root
-            elif root.val < key:
-                root.right = insert(root.right, key)
-            else:
-                root.left = insert(root.left, key)
-        return root
+    class Stack:
 
-    # A utility function to do inorder tree traversal
+        # Initializing a stack.
+        # Use a dummy node, which is
+        # easier for handling edge cases.
+        def __init__(self):
+            self.head = Node("head")
+            self.size = 0
 
+        # String representation of the stack
+        def __str__(self):
+            cur = self.head.next
+            out = ""
+            while cur:
+                out += str(cur.value) + "->"
+                cur = cur.next
+            return out[:-3]
 
-    def inorder(root):
-        if root:
-            inorder(root.left)
-            print(root.val)
-            inorder(root.right)
+        # Get the current size of the stack
+        def getSize(self):
+            return self.size
 
+        # Check if the stack is empty
+        def isEmpty(self):
+            return self.size == 0
 
-    # Driver program to test the above functions
-    # Let us create the following BST
-    # 50
-    # /	     # 30	 70
-    # / \ /     # 20 40 60 80
+        # Get the top item of the stack
+        def peek(self):
 
-    r = Node(50)
-    r = insert(r, 30)
-    r = insert(r, 20)
-    r = insert(r, 40)
-    r = insert(r, 70)
-    r = insert(r, 60)
-    r = insert(r, 80)
+            # Sanitary check to see if we
+            # are peeking an empty stack.
+            if self.isEmpty():
+                raise Exception("Peeking from an empty stack")
+            return self.head.next.value
 
-    # Print inoder traversal of the BST
-    inorder(r)
+        # Push a value into the stack.
+        def push(self, value):
+            node = Node(value)
+            node.next = self.head.next
+            self.head.next = node
+            self.size += 1
 
-    
-
-    # Python program to demonstrate delete operation
-    # in binary search tree
-
-    # A Binary Tree Node
-
-
-    class Node:
-
-        # Constructor to create a new node
-        def __init__(self, key):
-            self.key = key
-            self.left = None
-            self.right = None
+        # Remove a value from the stack and return.
+        def pop(self):
+            if self.isEmpty():
+                raise Exception("Popping from an empty stack")
+            remove = self.head.next
+            self.head.next = self.head.next.next
+            self.size -= 1
+            return remove.value
 
 
-    # A utility function to do inorder traversal of BST
-    def inorder(root):
-        if root is not None:
-            inorder(root.left)
-            print (root.key,end=" ")
-            inorder(root.right)
+    # Driver Code
+    if __name__ == "__main__":
+        stack = Stack()
+        for i in range(1, 11):
+            stack.push(i)
+        print(f"Stack: {stack}")
 
-
-    # A utility function to insert a
-    # new node with given key in BST
-    def insert(node, key):
-
-        # If the tree is empty, return a new node
-        if node is None:
-            return Node(key)
-
-        # Otherwise recur down the tree
-        if key < node.key:
-            node.left = insert(node.left, key)
-        else:
-            node.right = insert(node.right, key)
-
-        # return the (unchanged) node pointer
-        return node
-
-    # Given a non-empty binary
-    # search tree, return the node
-    # with minimum key value
-    # found in that tree. Note that the
-    # entire tree does not need to be searched
-
-
-    def minValueNode(node):
-        current = node
-
-        # loop down to find the leftmost leaf
-        while(current.left is not None):
-            current = current.left
-
-        return current
-
-    # Given a binary search tree and a key, this function
-    # delete the key and returns the new root
-
-
-    def deleteNode(root, key):
-
-        # Base Case
-        if root is None:
-            return root
-
-        # If the key to be deleted
-        # is smaller than the root's
-        # key then it lies in left subtree
-        if key < root.key:
-            root.left = deleteNode(root.left, key)
-
-        # If the kye to be delete
-        # is greater than the root's key
-        # then it lies in right subtree
-        elif(key > root.key):
-            root.right = deleteNode(root.right, key)
-
-        # If key is same as root's key, then this is the node
-        # to be deleted
-        else:
-
-            # Node with only one child or no child
-            if root.left is None:
-                temp = root.right
-                root = None
-                return temp
-
-            elif root.right is None:
-                temp = root.left
-                root = None
-                return temp
-
-            # Node with two children:
-            # Get the inorder successor
-            # (smallest in the right subtree)
-            temp = minValueNode(root.right)
-
-            # Copy the inorder successor's
-            # content to this node
-            root.key = temp.key
-
-            # Delete the inorder successor
-            root.right = deleteNode(root.right, temp.key)
-
-        return root
-        
+        for _ in range(1, 6):
+            remove = stack.pop()
+            print(f"Pop: {remove}")
+        print(f"Stack: {stack}")        
+            
+            
