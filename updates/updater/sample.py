@@ -1,31 +1,46 @@
 
-    # Python program to
-    # demonstrate queue implementation
-    # using list
+
+
+    # A simple Python program for traversal of a linked list
+
+    # Node class
+    class Node:
+
+        # Function to initialise the node object
+        def __init__(self, data):
+            self.data = data # Assign data
+            self.next = None # Initialize next as null
+
+
+    # Linked List class contains a Node object
+    class LinkedList:
+
+        # Function to initialize head
+        def __init__(self):
+            self.head = None
+
+        # This function prints contents of linked list
+        # starting from head
+        def printList(self):
+            temp = self.head
+            while (temp):
+                print (temp.data)
+                temp = temp.next
+
+
+    # Code execution starts here
+    if __name__=='__main__':
+
+        # Start with the empty list
+        llist = LinkedList()
+
+        llist.head = Node(1)
+        second = Node(2)
+        third = Node(3)
+
+        llist.head.next = second; # Link first node with second
+        second.next = third; # Link second node with the third node
+
+        llist.printList()
+
     
-    # Initializing a queue
-    queue = []
-    
-    # Adding elements to the queue
-    queue.append('a')
-    queue.append('b')
-    queue.append('c')
-    
-    print("Initial queue")
-    print(queue)
-    
-    # Removing elements from the queue
-    print("
-Elements dequeued from queue")
-    print(queue.pop(0))
-    print(queue.pop(0))
-    print(queue.pop(0))
-    
-    print("
-Queue after removing elements")
-    print(queue)
-    
-    # Uncommenting print(queue.pop(0))
-    # will raise and IndexError
-    # as the queue is now empty        
-            
