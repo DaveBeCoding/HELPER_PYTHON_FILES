@@ -1,40 +1,43 @@
 
             
+
+
             # Python program to
     # demonstrate stack implementation
-    # using collections.deque
+    # using queue module
 
-    from collections import deque
+    from queue import LifoQueue
 
-    stack = deque()
+    # Initializing a stack
+    stack = LifoQueue(maxsize=3)
 
-    # append() function to push
+    # qsize() show the number of elements
+    # in the stack
+    print(stack.qsize())
+
+    # put() function to push
     # element in the stack
-    stack.append('a')
-    stack.append('b')
-    stack.append('c')
+    stack.put('a')
+    stack.put('b')
+    stack.put('c')
 
-    print('Initial stack:')
-    print(stack)
+    print("Full: ", stack.full())
+    print("Size: ", stack.qsize())
 
-    # pop() function to pop
+    # get() function to pop
     # element from stack in
     # LIFO order
     print('
-Elements popped from stack:')
-    print(stack.pop())
-    print(stack.pop())
-    print(stack.pop())
+Elements popped from the stack')
+    print(stack.get())
+    print(stack.get())
+    print(stack.get())
 
-    print('
-Stack after elements are popped:')
-    print(stack)
-
-    # uncommenting print(stack.pop())
-    # will cause an IndexError
-    # as the stack is now empty
+    print("
+Empty: ", stack.empty())
 
 
-            
-            
+
+
+
             
