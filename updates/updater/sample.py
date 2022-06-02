@@ -1,43 +1,46 @@
 
-            
 
 
-            # Python program to
-    # demonstrate stack implementation
-    # using queue module
+    # A simple Python program for traversal of a linked list
 
-    from queue import LifoQueue
+    # Node class
+    class Node:
 
-    # Initializing a stack
-    stack = LifoQueue(maxsize=3)
-
-    # qsize() show the number of elements
-    # in the stack
-    print(stack.qsize())
-
-    # put() function to push
-    # element in the stack
-    stack.put('a')
-    stack.put('b')
-    stack.put('c')
-
-    print("Full: ", stack.full())
-    print("Size: ", stack.qsize())
-
-    # get() function to pop
-    # element from stack in
-    # LIFO order
-    print('
-Elements popped from the stack')
-    print(stack.get())
-    print(stack.get())
-    print(stack.get())
-
-    print("
-Empty: ", stack.empty())
+        # Function to initialise the node object
+        def __init__(self, data):
+            self.data = data # Assign data
+            self.next = None # Initialize next as null
 
 
+    # Linked List class contains a Node object
+    class LinkedList:
+
+        # Function to initialize head
+        def __init__(self):
+            self.head = None
+
+        # This function prints contents of linked list
+        # starting from head
+        def printList(self):
+            temp = self.head
+            while (temp):
+                print (temp.data)
+                temp = temp.next
 
 
+    # Code execution starts here
+    if __name__=='__main__':
 
-            
+        # Start with the empty list
+        llist = LinkedList()
+
+        llist.head = Node(1)
+        second = Node(2)
+        third = Node(3)
+
+        llist.head.next = second; # Link first node with second
+        second.next = third; # Link second node with the third node
+
+        llist.printList()
+
+    
