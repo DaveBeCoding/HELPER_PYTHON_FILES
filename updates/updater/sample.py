@@ -1,43 +1,31 @@
 
-            
-
-
-            # Python program to
-    # demonstrate stack implementation
-    # using queue module
-
-    from queue import LifoQueue
-
-    # Initializing a stack
-    stack = LifoQueue(maxsize=3)
-
-    # qsize() show the number of elements
-    # in the stack
-    print(stack.qsize())
-
-    # put() function to push
-    # element in the stack
-    stack.put('a')
-    stack.put('b')
-    stack.put('c')
-
-    print("Full: ", stack.full())
-    print("Size: ", stack.qsize())
-
-    # get() function to pop
-    # element from stack in
-    # LIFO order
-    print('
-Elements popped from the stack')
-    print(stack.get())
-    print(stack.get())
-    print(stack.get())
-
+    # Python program to
+    # demonstrate queue implementation
+    # using list
+    
+    # Initializing a queue
+    queue = []
+    
+    # Adding elements to the queue
+    queue.append('a')
+    queue.append('b')
+    queue.append('c')
+    
+    print("Initial queue")
+    print(queue)
+    
+    # Removing elements from the queue
     print("
-Empty: ", stack.empty())
-
-
-
-
-
+Elements dequeued from queue")
+    print(queue.pop(0))
+    print(queue.pop(0))
+    print(queue.pop(0))
+    
+    print("
+Queue after removing elements")
+    print(queue)
+    
+    # Uncommenting print(queue.pop(0))
+    # will raise and IndexError
+    # as the queue is now empty        
             
