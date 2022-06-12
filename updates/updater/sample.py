@@ -1,36 +1,31 @@
- 
-            
-            # Python program to
-    # demonstrate stack implementation
+
+    # Python program to
+    # demonstrate queue implementation
     # using list
     
-    stack = []
+    # Initializing a queue
+    queue = []
     
-    # append() function to push
-    # element in the stack
-    stack.append('a')
-    stack.append('b')
-    stack.append('c')
+    # Adding elements to the queue
+    queue.append('a')
+    queue.append('b')
+    queue.append('c')
     
-    print('Initial stack')
-    print(stack)
+    print("Initial queue")
+    print(queue)
     
-    # pop() function to pop
-    # element from stack in
-    # LIFO order
-    print('
-Elements popped from stack:')
-    print(stack.pop())
-    print(stack.pop())
-    print(stack.pop())
+    # Removing elements from the queue
+    print("
+Elements dequeued from queue")
+    print(queue.pop(0))
+    print(queue.pop(0))
+    print(queue.pop(0))
     
-    print('
-Stack after elements are popped:')
-    print(stack)
+    print("
+Queue after removing elements")
+    print(queue)
     
-    # uncommenting print(stack.pop())
-    # will cause an IndexError
-    # as the stack is now empty
-            
-            
+    # Uncommenting print(queue.pop(0))
+    # will raise and IndexError
+    # as the queue is now empty        
             
