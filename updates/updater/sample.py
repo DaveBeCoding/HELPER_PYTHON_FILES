@@ -1,90 +1,40 @@
 
-            # Node class
-    class Node:
+            
+            # Python program to
+    # demonstrate stack implementation
+    # using collections.deque
 
-        # Function to initialize the node object
-        def __init__(self, data):
-            self.data = data # Assign data
-            self.next = None # Initialize
-                            # next as null
+    from collections import deque
 
-    # Linked List class
-    class LinkedList:
-        
-        # Function to initialize the Linked
-        # List object
-        def __init__(self):
-            self.head = None
+    stack = deque()
 
-    # implement node struct
+    # append() function to push
+    # element in the stack
+    stack.append('a')
+    stack.append('b')
+    stack.append('c')
 
-    # A simple Python program to introduce a linked list
+    print('Initial stack:')
+    print(stack)
 
-    # Node class
-    class Node:
+    # pop() function to pop
+    # element from stack in
+    # LIFO order
+    print('
+Elements popped from stack:')
+    print(stack.pop())
+    print(stack.pop())
+    print(stack.pop())
 
-        # Function to initialise the node object
-        def __init__(self, data):
-            self.data = data # Assign data
-            self.next = None # Initialize next as null
+    print('
+Stack after elements are popped:')
+    print(stack)
 
-
-    # Linked List class contains a Node object
-    class LinkedList:
-
-        # Function to initialize head
-        def __init__(self):
-            self.head = None
+    # uncommenting print(stack.pop())
+    # will cause an IndexError
+    # as the stack is now empty
 
 
-    # Code execution starts here
-    if __name__=='__main__':
-
-        # Start with the empty list
-        llist = LinkedList()
-
-        llist.head = Node(1)
-        second = Node(2)
-        third = Node(3)
-
-        '''
-        Three nodes have been created.
-        We have references to these three blocks as head,
-        second and third
-
-        llist.head	 second			 third
-            |			 |				 |
-            |			 |				 |
-        +----+------+	 +----+------+	 +----+------+
-        | 1 | None |	 | 2 | None |	 | 3 | None |
-        +----+------+	 +----+------+	 +----+------+
-        '''
-
-        llist.head.next = second; # Link first node with second
-
-        '''
-        Now next of first Node refers to second. So they
-        both are linked.
-
-        llist.head	 second			 third
-            |			 |				 |
-            |			 |				 |
-        +----+------+	 +----+------+	 +----+------+
-        | 1 | o-------->| 2 | null |	 | 3 | null |
-        +----+------+	 +----+------+	 +----+------+
-        '''
-
-        second.next = third; # Link second node with the third node
-
-        '''
-        Now next of second Node refers to third. So all three
-        nodes are linked.
-
-        llist.head	 second			 third
-            |			 |				 |
-            |			 |				 |
-        +----+------+	 +----+------+	 +----+------+
-        | 1 | o-------->| 2 | o-------->| 3 | null |
-        +----+------+	 +----+------+	 +----+------+
-        '''        
+            
+            
             
