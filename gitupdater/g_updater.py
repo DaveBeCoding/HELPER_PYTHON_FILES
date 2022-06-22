@@ -4,7 +4,7 @@ from sys import argv
 
 # add a msg to the command line when calling script <-
 # add msg to script var to be used <-
-msg = ''.join(argv[1:])
+# msg = ''.join(argv[1:])
 
 # call git add . <-
 # once that msg is available add it to git -m "msg" <-
@@ -12,10 +12,11 @@ msg = ''.join(argv[1:])
 
 # call git push <-
 
-PATH_OF_GIT_REPO = r'../'  # make sure .git folder is properly configured
-COMMIT_MESSAGE = 'this is a test commit comment'
+MSG = ''.join(argv[1:]) # <- "my commit msg format"
+PATH_OF_GIT_REPO = r'../'  # .git
+COMMIT_MESSAGE = MSG
 
-def git_push():
+def gitupdater():
     try:
         repo = Repo(PATH_OF_GIT_REPO)
         repo.git.pull('origin')
@@ -26,4 +27,4 @@ def git_push():
     except:
         print('Error occured while pushing the code')    
 
-git_push()
+gitupdater()
