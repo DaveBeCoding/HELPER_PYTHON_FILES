@@ -16,13 +16,13 @@ PATH_OF_GIT_REPO = r'../'  # make sure .git folder is properly configured
 COMMIT_MESSAGE = 'this is a test commit comment'
 
 def git_push():
-    # try:
+    try:
         repo = Repo(PATH_OF_GIT_REPO)
-        repo.git.add(update=True)
+        repo.git.add(['.'])
         repo.index.commit(COMMIT_MESSAGE)
         origin = repo.remote(name='origin')
         origin.push()
-    # except:
-        # print('Error occured while pushing the code')    
+    except:
+        print('Error occured while pushing the code')    
 
 git_push()
