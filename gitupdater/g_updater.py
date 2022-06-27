@@ -5,49 +5,49 @@ from git import Repo
 import sys
 import os
 
+# separate module(s)
+#
 # sys.path.append(os.path.join(os.path.dirname(__file__), "../../"))
 from vars import *
-
-# logic is a bit off ...
-# <gitupdater> needs to know where this
-# new location is before being called
-# Bypass <dotGitExist> -> active (uncalled)
 
 
 def dotGitExist() -> bool:
     ''' Check for the existance of a .git dir '''
-    # if .git exist call gitupdater
     count = ONE_HUNDRED - ONE_HUNDRED
     if count > MAX_COUNT:
         print("not found")
         sys.exit(EXIT_CODE)
 
-    if os.path.isdir(CWD):
-        print(".git found in -> " + CWD)
-        # call gitupdater
-        gitupdater(CWD)
-    else:
-        if os.path.isdir(UP_DIR):
-            os.chdir(CHANGE_UP)
-            new_location = os.getcwd()
-            print('.git found in -> ' + str(new_location))
+    try:
+        if os.path.isdir(CWD):
+            print(".git found in -> " 
+                        + CWD)
             # call gitupdater
-            gitupdater(new_location)
-        elif os.path.isdir(UP_DIR_X_TWO):
-            os.chdir(CHANGE_UP_SQUARE)
-            location = os.getcwd()
-            print('.git found in -> ' + str(location))
-            # call gitupdater
-            gitupdater(location)
+            gitupdater(CWD)
         else:
-            dir = next(os.walk(WALK_NEXT))[COUNT_ONE]
-            dir_str = ''.join(dir)
-            os.chdir('./'+dir_str)
-            count += COUNT_ONE
-            dotGitExist()
-
-    # else, find root dir to check if .git exist
-
+            if os.path.isdir(UP_DIR):
+                os.chdir(CHANGE_UP)
+                new_location = os.getcwd()
+                print('.git found in -> ' 
+                            + str(new_location))
+                # call gitupdater
+                gitupdater(new_location)
+            elif os.path.isdir(UP_DIR_X_TWO):
+                os.chdir(CHANGE_UP_SQUARE)
+                location = os.getcwd()
+                print('.git found in -> ' 
+                            + str(location))
+                # call gitupdater
+                gitupdater(location)
+            else:
+                # work on logic of this section next <-
+                dir = next(os.walk(WALK_NEXT))[COUNT_ONE]
+                dir_str = ''.join(dir)
+                os.chdir('./'+dir_str)
+                count += COUNT_ONE
+                dotGitExist()
+    except:
+        print(FAIL_LOCATE_DIR)
 
 def progressor():
     '''Terminal status'''
@@ -76,9 +76,10 @@ def gitupdater(git_path) -> str:
         origin.push()
         progressor()
         os.system(SYSTEM_CLEAR)
-        
+
     except:
         print(FAIL_EXCEPTION)
+
 
 def current_path():
     os.getcwd()
