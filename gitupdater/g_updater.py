@@ -102,3 +102,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# test funct(s) in separate files
+# use this only as drive (main)
