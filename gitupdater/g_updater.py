@@ -93,7 +93,7 @@ def main():
     '''Main, call functions to perform github automation .:. Example [g_updater.py "write git message"...]'''
     os.system(SYSTEM_CLEAR)
     # import pdb; pdb.set_trace()
-    if len(MSG) < COUNT_ONE:
+    if len(COMMIT_MESSAGE) < COUNT_ONE:
         input('example input -> g_updater.py "your message to github"')
         sys.exit(EXIT_CODE)
     progressor()

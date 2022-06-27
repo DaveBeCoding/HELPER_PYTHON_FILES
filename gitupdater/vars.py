@@ -2,11 +2,10 @@ from sys import argv
 from os import getcwd
 
 # GIT VARs
-MSG = ''.join(argv[1:])  # <- "I like this format"
-COMMIT_MESSAGE = MSG
+COMMIT_MESSAGE = ''.join(argv[1:])
 GIT_ADD = '.'
 GIT_PULL = 'origin'
-REMOTE_NAME = 'origin'
+REMOTE_NAME = GIT_PULL
 FAIL_LOCATE_DIR ='Error locating .git dir'
 FAIL_EXCEPTION = 'Error occured while pushing code'
 
