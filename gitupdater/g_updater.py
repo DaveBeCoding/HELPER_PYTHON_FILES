@@ -2,6 +2,7 @@ from alive_progress import alive_bar
 from time import sleep
 from turtle import pd
 from git import Repo
+import banner
 import sys
 import os
 
@@ -20,23 +21,23 @@ def dotGitExist() -> bool:
 
     try:
         if os.path.isdir(CWD):
-            print(".git found in -> " 
-                        + CWD)
+            print(".git found in -> "
+                  + CWD)
             # call gitupdater
             gitupdater(CWD)
         else:
             if os.path.isdir(UP_DIR):
                 os.chdir(CHANGE_UP)
                 new_location = os.getcwd()
-                print('.git found in -> ' 
-                            + str(new_location))
+                print('.git found in -> '
+                      + str(new_location))
                 # call gitupdater
                 gitupdater(new_location)
             elif os.path.isdir(UP_DIR_X_TWO):
                 os.chdir(CHANGE_UP_SQUARE)
                 location = os.getcwd()
-                print('.git found in -> ' 
-                            + str(location))
+                print('.git found in -> '
+                      + str(location))
                 # call gitupdater
                 gitupdater(location)
             else:
@@ -48,6 +49,7 @@ def dotGitExist() -> bool:
                 dotGitExist()
     except:
         print(FAIL_LOCATE_DIR)
+
 
 def progressor():
     '''Terminal status'''
@@ -76,6 +78,8 @@ def gitupdater(git_path) -> str:
         origin.push()
         progressor()
         os.system(SYSTEM_CLEAR)
+        banner.print_banner()
+
 
     except:
         print(FAIL_EXCEPTION)
@@ -92,12 +96,8 @@ def main():
     if len(MSG) < COUNT_ONE:
         input('example input -> g_updater.py "your message to github"')
         sys.exit(EXIT_CODE)
-    # system(SYSTEM_CLEAR)
-    # call progressor
     progressor()
-    # call does dotgitexist
     dotGitExist()
-    # gitupdater()
 
 
 if __name__ == '__main__':
