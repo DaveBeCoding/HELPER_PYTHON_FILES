@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from alive_progress import alive_bar
 from time import sleep
 from turtle import pd
