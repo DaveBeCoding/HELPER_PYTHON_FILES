@@ -108,7 +108,7 @@ if __name__ == '__main__':
 # test funct(s) in separate files
 # use this only as drive (main)
 
-#
-#
-#
-#
+#TEST CREATING A SUBPROCESS TO DEACTIVATE VENV
+#TEST BASH SCRIPT WITH ALIAS TO DEACTIVATE VENV
+#TEST COMBO OF BOTH
+#GOAL NO USER INTERACTION WITH SCRIPT ONCE GIT MSG HAS BEEN INPUT
