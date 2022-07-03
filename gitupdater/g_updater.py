@@ -80,7 +80,7 @@ def gitupdater(git_path) -> str:
         origin.push()
         progressor()
         os.system(SYSTEM_CLEAR)
-        banner.print_banner()
+        banner.print_banner("RUN COMMAND -> deactivate")
 
 
     except:
