@@ -12,3 +12,5 @@ https://aws.amazon.com/getting-started/hands-on/build-train-deploy-machine-learn
 https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
 
 https://scikit-learn.org/stable/tutorial/basic/tutorial.html
+
+https://www.edureka.co/blog/classification-in-machine-learning/
