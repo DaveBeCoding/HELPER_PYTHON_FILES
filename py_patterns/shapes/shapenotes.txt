@@ -1,3 +1,5 @@
 outter loop == rows
 innner loop/nested == columns 
 https://www..com/watch?v=fX64q6sYom0
+
+Matrix: https://www..com/watch?v=X0HXnHKPXSo
