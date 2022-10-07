@@ -1,5 +1,5 @@
 n = 5 
-for x in range(n):
-    for y in range(n):
+for rows in range(n):
+    for columns in range(n):
         print('*', end='')
     print()
