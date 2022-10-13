@@ -7,3 +7,4 @@ https://problemsolvingwithpython.com/05-NumPy-and-Arrays/05.08-Systems-of-Linear
 
 
 https://www..com/watch?v=12j8OV-ptC4 <-
+https://www..com/watch?v=LlKAna21fLE
