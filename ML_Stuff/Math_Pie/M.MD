@@ -10,3 +10,5 @@ https://www..com/watch?v=12j8OV-ptC4 <-
 https://www..com/watch?v=LlKAna21fLE
 
 https://www.geeksforgeeks.org/create-a-correlation-matrix-using-python/
+
+UCI -> https://archive.ics.uci.edu/ml/index.php 
