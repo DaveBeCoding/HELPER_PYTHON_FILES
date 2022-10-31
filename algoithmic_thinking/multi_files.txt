@@ -1,0 +1,4 @@
+mkdir learning_c
+cd learning_c
+touch bspl{0001..0003}.c
+
