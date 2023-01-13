@@ -26,3 +26,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 '0b11'
 
 ```
+
+
+```python
+
+>>> import sys, subprocess 
+>>> subprocess.run([sys.executable, '-m', 'pip', 'install', 'ccxt'])
+
+```
