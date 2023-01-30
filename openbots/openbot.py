@@ -6,12 +6,12 @@ MAX_TOKEN = 0b10000000000
 MAX_N = 0b1
 
 class OpenBot:
-    def __init__(self, api_key, model_engine):
+    def __init__(self, api_key, model_engine) -> None:
         self.api_key = api_key
         self.model_engine = model_engine
         openai.api_key = self.api_key
         
-    def generate_response(self, prompt, max_tokens=MAX_TOKEN, n=MAX_N, stop=None, temperature=MAX_TEMPERATURE):
+    def generate_response(self, prompt, max_tokens=MAX_TOKEN, n=MAX_N, stop=None, temperature=MAX_TEMPERATURE) -> str:
         completions = openai.Completion.create(
             engine=self.model_engine,
             prompt=prompt,
