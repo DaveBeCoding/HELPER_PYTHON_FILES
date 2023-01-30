@@ -1,8 +1,12 @@
-import openkeys as keys
+import sys
 import openai
+import openkeys as keys
+from os import system, name
+from time import sleep as pause
 
 MAX_TEMPERATURE = 0b1 / 0b10
 MAX_TOKEN = 0b10000000000
+STOP = 0b11
 MAX_N = 0b1
 
 class OpenBot:
@@ -10,6 +14,12 @@ class OpenBot:
         self.api_key = api_key
         self.model_engine = model_engine
         openai.api_key = self.api_key
+    
+    def clear(self) -> None: # system agnostic 
+        if(name == 'nt'):
+            _ = system('cls')
+        else:
+            _ = system('clear')
         
     def generate_response(self, prompt, max_tokens=MAX_TOKEN, n=MAX_N, stop=None, temperature=MAX_TEMPERATURE) -> str:
         completions = openai.Completion.create(
@@ -22,15 +32,25 @@ class OpenBot:
         )
         return completions.choices[0b0].text
 
-# Initialize class
-open_bot = OpenBot(api_key=keys.keys(), model_engine="text-davinci-002")
+try:
+    if __name__ == "__main__":
+        open_bot = OpenBot(api_key=keys.keys(), model_engine="text-davinci-002")
+        open_bot.clear()
+        question = input(f" Enter your question -> ")
+        response = open_bot.generate_response(prompt=question)
+        print(response)
+        pause(STOP)
+except:
+    print(sys.exc_info())
 
-# Response instance
-question = input(f" Enter your question -> ")
-response = open_bot.generate_response(prompt=question)
 
-# Response
-print(response)
+
+
+# open_bot = OpenBot(api_key=keys.keys(), model_engine="text-davinci-002")
+
+# question = input(f" Enter your question -> ")
+# response = open_bot.generate_response(prompt=question)
+# print(response)
 
 
 '''
