@@ -2,7 +2,6 @@ import sys
 import openai
 import openkeys as keys
 from os import system, name
-from time import sleep as pause
 
 MAX_TEMPERATURE = 0b1 / 0b10
 MAX_TOKEN = 0b10000000000
@@ -36,12 +35,10 @@ try:
     if __name__ == "__main__":
         while True:
             open_bot = OpenBot(api_key=keys.keys(), model_engine="text-davinci-002")
-            # open_bot.clear()
-            question = input(f" Enter your question, type exit to quit -> ")
+            question = input(f" \nEnter your question, type exit to quit -> ")
             if question == "exit":
                 break
             response = open_bot.generate_response(prompt=question)
             print(response)
-            # pause(STOP)
 except:
     print(sys.exc_info())
