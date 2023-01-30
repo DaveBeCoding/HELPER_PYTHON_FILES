@@ -1,66 +1,44 @@
-import sys
-import openai as open
 import openkeys as keys
-from os import system, name
+import openai
 
-user_input = sys.argv[1:]
+MAX_TEMPERATURE = 0b1 / 0b10
+MAX_TOKEN = 0b10000000000
+MAX_N = 0b1
 
-open.api_key = keys.keys()
-# prompt = (f"whats at the center of the universe") -> ''.join(user_input)
-prompt = input(f"Enter Question for the Open Bot -> ")
+class OpenBot:
+    def __init__(self, api_key, model_engine):
+        self.api_key = api_key
+        self.model_engine = model_engine
+        openai.api_key = self.api_key
+        
+    def generate_response(self, prompt, max_tokens=MAX_TOKEN, n=1, stop=None, temperature=0.5):
+        completions = openai.Completion.create(
+            engine=self.model_engine,
+            prompt=prompt,
+            max_tokens=max_tokens,
+            n=n,
+            stop=stop,
+            temperature=temperature,
+        )
+        return completions.choices[0].text
 
-completions = open.Completion.create(
-    engine="text-davinci-002",
-    prompt=prompt,
-    max_tokens=1024,
-    n=1,
-    stop=None,
-    temperature=0.5,
-)
+# Initialize class
+open_bot = OpenBot(api_key=keys.keys(), model_engine="text-davinci-002")
 
-print(completions.choices[0].text)
+# Response instance
+question = input(f" Enter your question -> ")
+response = open_bot.generate_response(prompt=question)
 
-# class OpenBot():
-#     def __init__(self) -> None:
-#         self.clear()
-#         self.main_msg()
-
-#     def clear(self) -> None: # system agnostic 
-#         if(name == 'nt'):
-#             _ = system('cls')
-#         else:
-#             _ = system('clear')
-
-
-
-
-# try:
-#     if __name__ == "__main__":
-#         gmres = GMRES()
-#         pause(STOP)
-#         gmres.main()
-# except:
-#     system('cls') if name == 'nt' else system('clear')
-#     print("...\n")
-#     print("-----------------------------------------------------------------|")
-#     print("ERROR, Please check your configuration                           ")
-#     print("...\n                                                            ")
-#     print("Install the appropriate modules as well               ")
-#     print("...\n                                                            ") 
-#     print("pip install :: scipy.stats,  numpy, warnings, scipy.sparse       ")
-#     print("...\n                                                            ")
-#     print("-----------------------------------------------------------------|")
+# Response
+print(response)
 
 
 '''
 Loop prompt
-
 while True:
     user_input = input("Please enter a number, or type 'exit' to quit: ")
     if user_input == "exit":
         break
     else:
         print(int(user_input)**2)
-
-
 '''
