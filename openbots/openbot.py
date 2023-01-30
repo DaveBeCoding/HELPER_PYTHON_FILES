@@ -11,7 +11,7 @@ class OpenBot:
         self.model_engine = model_engine
         openai.api_key = self.api_key
         
-    def generate_response(self, prompt, max_tokens=MAX_TOKEN, n=MAX_N, stop=None, temperature=0.5):
+    def generate_response(self, prompt, max_tokens=MAX_TOKEN, n=MAX_N, stop=None, temperature=MAX_TEMPERATURE):
         completions = openai.Completion.create(
             engine=self.model_engine,
             prompt=prompt,
