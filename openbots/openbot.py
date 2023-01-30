@@ -20,7 +20,7 @@ class OpenBot:
             stop=stop,
             temperature=temperature,
         )
-        return completions.choices[0].text
+        return completions.choices[0b0].text
 
 # Initialize class
 open_bot = OpenBot(api_key=keys.keys(), model_engine="text-davinci-002")
