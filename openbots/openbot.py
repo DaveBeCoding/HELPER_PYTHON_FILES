@@ -34,31 +34,14 @@ class OpenBot:
 
 try:
     if __name__ == "__main__":
-        open_bot = OpenBot(api_key=keys.keys(), model_engine="text-davinci-002")
-        open_bot.clear()
-        question = input(f" Enter your question -> ")
-        response = open_bot.generate_response(prompt=question)
-        print(response)
-        pause(STOP)
+        while True:
+            open_bot = OpenBot(api_key=keys.keys(), model_engine="text-davinci-002")
+            # open_bot.clear()
+            question = input(f" Enter your question, type exit to quit -> ")
+            if question == "exit":
+                break
+            response = open_bot.generate_response(prompt=question)
+            print(response)
+            # pause(STOP)
 except:
     print(sys.exc_info())
-
-
-
-
-# open_bot = OpenBot(api_key=keys.keys(), model_engine="text-davinci-002")
-
-# question = input(f" Enter your question -> ")
-# response = open_bot.generate_response(prompt=question)
-# print(response)
-
-
-'''
-Loop prompt
-while True:
-    user_input = input("Please enter a number, or type 'exit' to quit: ")
-    if user_input == "exit":
-        break
-    else:
-        print(int(user_input)**2)
-'''
