@@ -1,3 +1,8 @@
+"""OpenBot
+
+Returns:
+    AI Assistant: "Hey OpenBot" helps with daily tasks.
+"""
 import sys
 import openai
 import openkeys as keys
