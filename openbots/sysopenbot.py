@@ -1,17 +1,12 @@
-"""OpenBot
+#! /usr/bin/python
 
-Returns:
-    AI Assistant: "Hey OpenBot" helps with daily tasks.
-
-"""
 import sys
 import openai
+# import argparse
 import openkeys as keys
 from os import system, name
-import keyboard
-import subprocess 
 
-PROMPT_USER = f" \nEnter your question, type exit to quit -> "
+PROMPT_USER = f" \n****** Enter your question, type exit to quit *****\n-> "
 MODEL_ENGINE = "text-davinci-002"
 MAX_TEMPERATURE = 0b1 / 0b10
 MAX_TOKEN = 0b10000000000
@@ -23,6 +18,15 @@ RETURN_0 = "exit"
 MAX_START = 0b0
 STOP = 0b11
 MAX_N = 0b1
+
+
+# parser = argparse.ArgumentParser()
+
+# parser.add_argument("--question", type=str, required=True, help="Pull Request Status")
+
+# args = parser.parse_args()
+
+# pull_request_status = args.prstatus
 
 class OpenBot:
     def __init__(self, api_key, 
@@ -48,24 +52,18 @@ class OpenBot:
             temperature=temperature,
         )
         return completions.choices[MAX_START].text
-    # def 
 
 try:
     if __name__ == DUNDER_MAIN:
         while True:
-            # D.R.Y. -> 
             open_bot = OpenBot(api_key=keys.keys(), 
                         model_engine=MODEL_ENGINE)
             question = input(PROMPT_USER)
+            # questionargs = " "
             if question == RETURN_0:
                 break
-            elif question == 'clearr':
-                subprocess.call('clear')
-                # D.R.Y. -> 
-                open_bot = OpenBot(api_key=keys.keys(), 
-                        model_engine=MODEL_ENGINE)
-            question = input(PROMPT_USER)
             response = open_bot.generate_response(prompt=question)
             print(response)
 except:
     print(sys.exc_info())
+#  python -m pydoc
