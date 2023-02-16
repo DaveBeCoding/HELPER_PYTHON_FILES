@@ -11,7 +11,7 @@ from os import system, name
 import keyboard
 import subprocess 
 
-PROMPT_USER = f" \nEnter your question, type exit to quit -> "
+PROMPT_USER = f" \n****** Enter your question, type exit to quit *****\n-> "
 MODEL_ENGINE = "text-davinci-002"
 MAX_TEMPERATURE = 0b1 / 0b10
 MAX_TOKEN = 0b10000000000
@@ -19,7 +19,7 @@ WINDOWS_SYS_CLEAR = 'cls'
 DUNDER_MAIN = "__main__"
 UNIX_SYS_CLEAR = 'clear'
 WINDOWS_SYS = 'nt'
-RETURN_0 = "exit"
+RETURN_0 = "exit()"
 MAX_START = 0b0
 STOP = 0b11
 MAX_N = 0b1
@@ -53,15 +53,15 @@ class OpenBot:
 try:
     if __name__ == DUNDER_MAIN:
         while True:
-            # D.R.Y. -> 
+            # D.R.Y. -> dont merge till input delay is corrected
             open_bot = OpenBot(api_key=keys.keys(), 
                         model_engine=MODEL_ENGINE)
             question = input(PROMPT_USER)
             if question == RETURN_0:
                 break
-            elif question == 'clearr':
+            elif question == 'clear()':
                 subprocess.call('clear')
-                # D.R.Y. -> 
+                # D.R.Y. -> turn exit into subprcess ()
                 open_bot = OpenBot(api_key=keys.keys(), 
                         model_engine=MODEL_ENGINE)
             question = input(PROMPT_USER)
