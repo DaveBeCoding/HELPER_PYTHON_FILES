@@ -49,20 +49,39 @@ class OpenBot:
             temperature=temperature,
         )
         return completions.choices[MAX_START].text
+    
+    def on_press_key(key):
+        if key == keyboard.Key.ctrl_l:
+            print('You Pressed CTRL+L!')
+        # keyboard.on_press_key(on_press_key)
 
 try:
     if __name__ == DUNDER_MAIN:
         while True:
-            open_bot = OpenBot(api_key=keys.keys(), 
-                        model_engine=MODEL_ENGINE)
+            # open_bot = OpenBot(api_key=keys.keys(), 
+            #             model_engine=MODEL_ENGINE)
             question = input(PROMPT_USER)
             if question == RETURN_0:
                 break
             elif question == UNIX_SYS_CLEAR:
+                # keyboard.on_press_key(on_press_key) # setup keyboard listener
                 cmd = SYSTEM_C
                 subprocess.run(cmd)
                 question = input(PROMPT_USER)
-            response = open_bot.generate_response(prompt=question)
+                if question == RETURN_0:
+                    break
+                open_bot = OpenBot(api_key=keys.keys(), 
+                        model_engine=MODEL_ENGINE)
+                response = open_bot.generate_response(prompt=question)
+            else:
+                open_bot = OpenBot(api_key=keys.keys(), 
+                        model_engine=MODEL_ENGINE)
+                response = open_bot.generate_response(prompt=question)
+
+                # question = input(PROMPT_USER)
+            # open_bot = OpenBot(api_key=keys.keys(), 
+                        # model_engine=MODEL_ENGINE)
+            # response = open_bot.generate_response(prompt=question)
             print(response)
 except:
     print(sys.exc_info())
