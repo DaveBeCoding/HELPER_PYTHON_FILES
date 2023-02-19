@@ -55,21 +55,14 @@ class OpenBot:
 try:
     if __name__ == DUNDER_MAIN:
         while True:
-            # D.R.Y. -> dont merge till input delay is corrected
             open_bot = OpenBot(api_key=keys.keys(), 
                         model_engine=MODEL_ENGINE)
             question = input(PROMPT_USER)
-            
             if question == 'exit()':
                 exit()
-                # subprocess.run(exit(1))
             elif question == 'clear()':
                 cmd = 'clear'
                 subprocess.run(cmd)
-                # D.R.Y. -> turn exit into subprcess ()
-                # open_bot = OpenBot(api_key=keys.keys(), 
-                        # model_engine=MODEL_ENGINE)
-            
                 question = input(PROMPT_USER)
             response = open_bot.generate_response(prompt=question)
             print(response)
