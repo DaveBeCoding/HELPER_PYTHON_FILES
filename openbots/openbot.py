@@ -55,8 +55,7 @@ try:
                 break
             elif question == UNIX_SYS_CLEAR:
                 # keyboard.on_press_key(on_press_key) # setup keyboard listener
-                cmd = SYSTEM_C
-                subprocess.run(cmd)
+                subprocess.run(SYSTEM_C)
                 question = input(PROMPT_USER)
                 if question == RETURN_0:
                     break
