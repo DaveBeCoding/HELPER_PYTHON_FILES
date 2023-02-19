@@ -17,9 +17,10 @@ MAX_TEMPERATURE = 0b1 / 0b10
 MAX_TOKEN = 0b10000000000
 WINDOWS_SYS_CLEAR = 'cls'
 DUNDER_MAIN = "__main__"
-UNIX_SYS_CLEAR = 'clear'
+UNIX_SYS_CLEAR = 'clear()'
 RETURN_0 = "exit()"
 WINDOWS_SYS = 'nt'
+SYSTEM_C = 'clear'
 MAX_START = 0b0
 STOP = 0b11
 MAX_N = 0b1
@@ -55,10 +56,10 @@ try:
             open_bot = OpenBot(api_key=keys.keys(), 
                         model_engine=MODEL_ENGINE)
             question = input(PROMPT_USER)
-            if question == 'exit()':
-                exit()
-            elif question == 'clear()':
-                cmd = 'clear'
+            if question == RETURN_0:
+                break
+            elif question == UNIX_SYS_CLEAR:
+                cmd = SYSTEM_C
                 subprocess.run(cmd)
                 question = input(PROMPT_USER)
             response = open_bot.generate_response(prompt=question)
