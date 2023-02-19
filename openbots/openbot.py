@@ -48,7 +48,9 @@ class OpenBot:
             temperature=temperature,
         )
         return completions.choices[MAX_START].text
-    # def 
+    
+    def initialize_bot(self) -> str:
+        pass 
 
 try:
     if __name__ == DUNDER_MAIN:
@@ -57,14 +59,18 @@ try:
             open_bot = OpenBot(api_key=keys.keys(), 
                         model_engine=MODEL_ENGINE)
             question = input(PROMPT_USER)
-            if question == RETURN_0:
-                break
+            
+            if question == 'exit()':
+                exit()
+                # subprocess.run(exit(1))
             elif question == 'clear()':
-                subprocess.call('clear')
+                cmd = 'clear'
+                subprocess.run(cmd)
                 # D.R.Y. -> turn exit into subprcess ()
-                open_bot = OpenBot(api_key=keys.keys(), 
-                        model_engine=MODEL_ENGINE)
-            question = input(PROMPT_USER)
+                # open_bot = OpenBot(api_key=keys.keys(), 
+                        # model_engine=MODEL_ENGINE)
+            
+                question = input(PROMPT_USER)
             response = open_bot.generate_response(prompt=question)
             print(response)
 except:
