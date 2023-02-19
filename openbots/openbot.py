@@ -32,11 +32,11 @@ class OpenBot:
         self.model_engine = model_engine
         openai.api_key = self.api_key
     
-    def clear(self) -> None: # system agnostic 
-        if(name == WINDOWS_SYS):
-            _ = system(WINDOWS_SYS_CLEAR)
-        else:
-            _ = system(UNIX_SYS_CLEAR)
+    # def clear(self) -> None: # system agnostic 
+    #     if(name == WINDOWS_SYS):
+    #         _ = system(WINDOWS_SYS_CLEAR)
+    #     else:
+    #         _ = system(UNIX_SYS_CLEAR)
         
     def generate_response(self, prompt, max_tokens=MAX_TOKEN, n=MAX_N, 
                                 stop=None, temperature=MAX_TEMPERATURE) -> str:
@@ -58,8 +58,6 @@ class OpenBot:
 try:
     if __name__ == DUNDER_MAIN:
         while True:
-            # open_bot = OpenBot(api_key=keys.keys(), 
-            #             model_engine=MODEL_ENGINE)
             question = input(PROMPT_USER)
             if question == RETURN_0:
                 break
@@ -77,11 +75,6 @@ try:
                 open_bot = OpenBot(api_key=keys.keys(), 
                         model_engine=MODEL_ENGINE)
                 response = open_bot.generate_response(prompt=question)
-
-                # question = input(PROMPT_USER)
-            # open_bot = OpenBot(api_key=keys.keys(), 
-                        # model_engine=MODEL_ENGINE)
-            # response = open_bot.generate_response(prompt=question)
             print(response)
 except:
     print(sys.exc_info())
