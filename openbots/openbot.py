@@ -48,9 +48,6 @@ class OpenBot:
             temperature=temperature,
         )
         return completions.choices[MAX_START].text
-    
-    def initialize_bot(self) -> str:
-        pass 
 
 try:
     if __name__ == DUNDER_MAIN:
