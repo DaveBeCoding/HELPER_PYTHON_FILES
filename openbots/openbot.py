@@ -14,12 +14,10 @@ import sys
 PROMPT_USER = f" \n****** Enter your question, type exit to quit *****\n-> "
 MODEL_ENGINE = "text-davinci-002"
 MAX_TEMPERATURE = 0b1 / 0b10
-MAX_TOKEN = 0b10000000000
-WINDOWS_SYS_CLEAR = 'cls'
-DUNDER_MAIN = "__main__"
 UNIX_SYS_CLEAR = 'clear()'
+MAX_TOKEN = 0b10000000000
+DUNDER_MODE = "__main__"
 RETURN_0 = "exit()"
-WINDOWS_SYS = 'nt'
 SYSTEM_C = 'clear'
 MAX_START = 0b0
 STOP = 0b11
@@ -31,12 +29,6 @@ class OpenBot:
         self.api_key = api_key
         self.model_engine = model_engine
         openai.api_key = self.api_key
-    
-    # def clear(self) -> None: # system agnostic 
-    #     if(name == WINDOWS_SYS):
-    #         _ = system(WINDOWS_SYS_CLEAR)
-    #     else:
-    #         _ = system(UNIX_SYS_CLEAR)
         
     def generate_response(self, prompt, max_tokens=MAX_TOKEN, n=MAX_N, 
                                 stop=None, temperature=MAX_TEMPERATURE) -> str:
@@ -56,7 +48,7 @@ class OpenBot:
         # keyboard.on_press_key(on_press_key)
 
 try:
-    if __name__ == DUNDER_MAIN:
+    if __name__ == DUNDER_MODE:
         while True:
             question = input(PROMPT_USER)
             if question == RETURN_0:
