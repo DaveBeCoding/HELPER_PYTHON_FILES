@@ -4,12 +4,12 @@ Returns:
     AI Assistant: "Hey OpenBot" helps with daily tasks.
 
 """
-import sys
-import openai
-import openkeys as keys
 from os import system, name
-import keyboard
+import openkeys as keys
 import subprocess 
+import keyboard
+import openai
+import sys
 
 PROMPT_USER = f" \n****** Enter your question, type exit to quit *****\n-> "
 MODEL_ENGINE = "text-davinci-002"
@@ -18,8 +18,8 @@ MAX_TOKEN = 0b10000000000
 WINDOWS_SYS_CLEAR = 'cls'
 DUNDER_MAIN = "__main__"
 UNIX_SYS_CLEAR = 'clear'
-WINDOWS_SYS = 'nt'
 RETURN_0 = "exit()"
+WINDOWS_SYS = 'nt'
 MAX_START = 0b0
 STOP = 0b11
 MAX_N = 0b1
