@@ -41,12 +41,7 @@ class OpenBot:
             temperature=temperature,
         )
         return completions.choices[MAX_START].text
-    
-    def on_press_key(key):
-        if key == keyboard.Key.ctrl_l:
-            print('You Pressed CTRL+L!')
-        # keyboard.on_press_key(on_press_key) # this module requires root access
-
+        
 try:
     if __name__ == DUNDER_MODE:
         while True:
