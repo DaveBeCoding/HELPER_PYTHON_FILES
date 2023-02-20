@@ -1,7 +1,7 @@
 """OpenBot
 
 Returns:
-    AI Assistant: "Hey OpenBot" helps with daily tasks.
+    AI Terminal Assistant: "Hey OpenBot" helps with daily tasks.
 
 """
 from os import system, name
