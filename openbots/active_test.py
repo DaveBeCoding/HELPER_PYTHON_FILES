@@ -38,7 +38,7 @@ try:
     if __name__ == DUNDER_MODE:
         question_history = []
         while True:
-            question = input(PROMPT_USER) # redline
+            question = input(PROMPT_USER)
             if question == RETURN_0:
                 break
             elif question == UNIX_SYS_CLEAR:
