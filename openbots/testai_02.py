@@ -1,13 +1,7 @@
-"""OpenBot
-
-Returns:
-    AI Terminal Assistant: "Hey OpenBot" helps with daily tasks.
-
-"""
 from os import system, name
 import openkeys as keys
 import subprocess 
-# import keyboard
+import keyboard
 import openai
 import sys
 
@@ -41,11 +35,19 @@ class OpenBot:
             temperature=temperature,
         )
         return completions.choices[MAX_START].text
-        
+
 try:
     if __name__ == DUNDER_MODE:
+        last_question = ''
         while True:
-            question = input(PROMPT_USER)
+            # this uses root! DO NOT escalate privileges
+            if keyboard.is_pressed('up') and last_question:
+                question = last_question
+                print(f'\033[1A\033[K{PROMPT_USER}{question}')
+            else:
+                question = input(PROMPT_USER)
+                last_question = question
+
             if question == RETURN_0:
                 break
             elif question == UNIX_SYS_CLEAR:
