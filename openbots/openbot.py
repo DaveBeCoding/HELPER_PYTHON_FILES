@@ -50,12 +50,12 @@ try:
                 break
             elif question == UNIX_SYS_CLEAR:
                 subprocess.run(SYSTEM_C)
-                question = input(PROMPT_USER)
-                if question == RETURN_0:
-                    break
-                open_bot = OpenBot(api_key=keys.keys(), 
-                        model_engine=MODEL_ENGINE)
-                response = open_bot.generate_response(prompt=question)
+                continue # question = input(PROMPT_USER)
+                # if question == RETURN_0:
+                    # break
+                # open_bot = OpenBot(api_key=keys.keys(), 
+                        # model_engine=MODEL_ENGINE)
+                # response = open_bot.generate_response(prompt=question)
             else:
                 open_bot = OpenBot(api_key=keys.keys(), 
                         model_engine=MODEL_ENGINE)
