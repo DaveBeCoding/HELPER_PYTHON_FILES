@@ -36,10 +36,9 @@ class OpenBot:
 
 try:
     if __name__ == DUNDER_MODE:
-        question_history = []  # initialize an empty list to store the history of questions asked
+        question_history = []
         while True:
-            # use readline to enable up arrow key
-            question = input(PROMPT_USER)
+            question = input(PROMPT_USER) # redline
             if question == RETURN_0:
                 break
             elif question == UNIX_SYS_CLEAR:
@@ -47,11 +46,11 @@ try:
                 continue
             elif question == "":
                 try:
-                    question = question_history[-1]  # get the last question asked from history
+                    question = question_history[-1]  
                 except IndexError:
-                    continue  # if history is empty, go to next iteration of loop
+                    continue
             else:
-                question_history.append(question)  # add new question to history
+                question_history.append(question)
                 open_bot = OpenBot(api_key=keys.keys(), model_engine=MODEL_ENGINE)
                 response = open_bot.generate_response(prompt=question)
             print(response)
