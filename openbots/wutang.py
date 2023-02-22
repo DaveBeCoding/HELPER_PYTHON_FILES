@@ -1,6 +1,6 @@
 from os import system, name
 import openkeys as keys
-import subprocess 
+import subprocess
 import readline
 import openai
 import sys
@@ -23,8 +23,8 @@ class OpenBot:
         self.model_engine = model_engine
         openai.api_key = self.api_key
         
-    def generate_response(self, prompt, max_tokens=MAX_TOKEN, n=MAX_N, stop=None, 
-    temperature=MAX_TEMPERATURE) -> str:
+    def generate_response(self, prompt, max_tokens=MAX_TOKEN, n=MAX_N, stop=None,
+                          temperature=MAX_TEMPERATURE) -> str:
         completions = openai.Completion.create(
             engine=self.model_engine,
             prompt=prompt,
@@ -34,6 +34,22 @@ class OpenBot:
             temperature=temperature,
         )
         return completions.choices[MAX_START].text
+
+def completer(text, state):
+    options = [UNIX_SYS_CLEAR, RETURN_0]
+    question_history = readline.get_history_item(
+        readline.get_current_history_length() - 1)
+    if question_history:
+        options.append(question_history)
+    options.extend(globals().keys())
+    matches = [s for s in options if s and s.startswith(text)]
+    if state < len(matches):
+        return matches[state] + ' '
+    else:
+        return None
+
+readline.parse_and_bind('tab: complete')
+readline.set_completer(completer)
 
 try:
     if __name__ == DUNDER_MODE:
@@ -47,7 +63,7 @@ try:
                 continue
             elif question == "":
                 try:
-                    question = question_history[-1]  
+                    question = question_history[-1]
                 except IndexError:
                     continue
             else:
