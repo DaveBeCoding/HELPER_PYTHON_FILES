@@ -1,9 +1,9 @@
 from os import system, name
 import openkeys as keys
 import subprocess 
+import readline
 import openai
 import sys
-import readline
 
 PROMPT_USER = f" \n****** Enter your question, type exit to quit *****\n-> "
 MODEL_ENGINE = "text-davinci-002"
